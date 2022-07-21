@@ -17,7 +17,7 @@ const Data = () => {
                 setData(response.data)
                 setColor("green")
                 // console.log(Object.keys(data))
-                // console.log(data)
+                console.log(data)
             })
             .catch(error => {
                 console.log(error)
@@ -48,7 +48,9 @@ const Data = () => {
                 {returnData("Portugal", "PT")} */}
                 {data ? Object.entries(data).map((elem) => {
                     return <div key={elem} className="data-container">
-                        <h1>{elem[0]}</h1>
+                        {/* <Flag code={elem[1].All.abbreviation} /> */}
+                        {elem[1].All.abbreviation ?  <Flag code={elem[1].All.abbreviation} /> : null }
+                        <h1 className='data-title'>{elem[0]}</h1>
                         <div className='data-text'>
                             <h2><span className='data-subtitle'>Deaths</span> {elem[1].All.deaths}</h2>
                             <h2><span className='data-subtitle'>Cases</span> {elem[1].All.confirmed}</h2>

@@ -28,26 +28,35 @@ const Data = () => {
 
     }
 
+
     return (
         <div>
+            <button onClick={() => console.log(data)}>Data</button>
             <div className='main-container'>
+
                 {data ? Object.entries(data).map((elem) => {
                     return <div key={elem} className="data-container">
                         {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : null}
-                        <h1 className='data-title'>{elem[0]}</h1>
+                        <p className='data-title'>{elem[1].All.location}</p>
+                        <h2 className='data-capital'>{elem[0]}</h2>
                         <div className='data-text'>
-                            <h2 className='data-subtitle'>Deaths: <em />
-                                <span className={elem[1].All.deaths < 1000 ? "col-green" : "col-orange"}>
-                                    {elem[1].All.deaths}</span></h2>
-                            <h2 className='data-subtitle'>Cases <em />
-                                <span className={elem[1].All.cases < 50000 ? "col-green" : "col-orange"}>
-                                    {elem[1].All.confirmed}</span></h2>
+                            <p className='data-subtitle'>Population:
+                                <span className='data-num'>{elem[1].All.population}</span></p>
+                            <p className='data-subtitle'>Cases
+                                <span className={`data-num ${elem[1].All.deaths < 50000 ? "col-orange" : "col-red"}`}>
+                                    {elem[1].All.confirmed}</span></p>
+                            {/* <p className='data-subtitle'>Deaths:
+                                <span className={elem[1].All.deaths < 1000 ? "col-orange" : "col-red"}>
+                                    {elem[1].All.deaths}</span></p> */}
+                            <p className='data-subtitle'>Deaths:
+                                <span className={`data-num ${elem[1].All.deaths < 1000 ? "col-orange" : "col-red"}`}>
+                                    {elem[1].All.deaths}</span></p>
+
                         </div>
                     </div>
                 })
                     : null}
             </div>
-            {/* <button onClick={() => console.log(data)}>Data</button> */}
         </div>
     );
 }

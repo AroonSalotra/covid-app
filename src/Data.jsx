@@ -35,7 +35,7 @@ const Data = () => {
             <div className='main-container'>
                 {data ? Object.entries(data).map((elem) => {
                     return <div key={elem} className="data-container">
-                        {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : null}
+                        {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : <div className='img-placeholder'></div>}
                         <p className='data-title'>{elem[1].All.location}</p>
                         <p className='data-capital'>{elem[0]}</p>
                         <div className='data-text'>

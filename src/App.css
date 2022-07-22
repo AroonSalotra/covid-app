@@ -140,6 +140,12 @@ body {
   width: 200px;
 }
 
+.img-placeholder {
+  height: 100px;
+  width: 200px;
+  background: rgba(128, 128, 128, 0.61);
+}
+
 .data-title {
   text-align: center;
   font-weight: 400;
@@ -181,12 +187,14 @@ body {
 }
 
 .footer {
+  position: fixed;
   background: rgb(133, 69, 69);
   background: var(--clr-b);
   /* position: fixed; */
-  /* width: 100vw; */
+  width: 100vw;
   /* padding-left: 40rem; */
-  margin: auto;
+  /* margin: auto; */
+  bottom: 0;
   border-top: 5px solid var(--clr-b);
   color: white;
 }
@@ -204,18 +212,18 @@ body {
 }
 
 .col-red {
-  color: rgb(139, 47, 47);
-  font-weight: 600;
+  color: rgb(163, 63, 63);
+  font-weight: 800;
 }
 
 .col-orange {
-  color: rgb(218, 146, 80);
-  font-weight: 600;
+  color: rgb(163, 118, 76);
+  font-weight: 800;
 }
 
 .col-green {
   color: rgb(168, 206, 168);
-  font-weight: 600;
+  font-weight: 800;
 }
 
 

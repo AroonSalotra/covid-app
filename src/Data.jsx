@@ -38,17 +38,17 @@ const Data = () => {
                     return <div key={elem} className="data-container">
                         {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : null}
                         <p className='data-title'>{elem[1].All.location}</p>
-                        <h2 className='data-capital'>{elem[0]}</h2>
+                        <p className='data-capital'>{elem[0]}</p>
                         <div className='data-text'>
-                            <p className='data-subtitle'>Population:
-                                <span className='data-num'>{elem[1].All.population}</span></p>
+                            <p className='data-subtitle'>Population
+                                <span className='data-num'>{elem[1].All.population > 0 ? elem[1].All.population : "[NO DATA]"}</span></p>
                             <p className='data-subtitle'>Cases
                                 <span className={`data-num ${elem[1].All.deaths < 50000 ? "col-orange" : "col-red"}`}>
                                     {elem[1].All.confirmed}</span></p>
                             {/* <p className='data-subtitle'>Deaths:
                                 <span className={elem[1].All.deaths < 1000 ? "col-orange" : "col-red"}>
                                     {elem[1].All.deaths}</span></p> */}
-                            <p className='data-subtitle'>Deaths:
+                            <p className='data-subtitle'>Deaths
                                 <span className={`data-num ${elem[1].All.deaths < 1000 ? "col-orange" : "col-red"}`}>
                                     {elem[1].All.deaths}</span></p>
 

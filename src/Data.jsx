@@ -30,10 +30,9 @@ const Data = () => {
 
 
     return (
-        <div>
-            <button onClick={() => console.log(data)}>Data</button>
+        <div className=''>
+            {/* <button onClick={() => console.log(data)}>Data</button> */}
             <div className='main-container'>
-
                 {data ? Object.entries(data).map((elem) => {
                     return <div key={elem} className="data-container">
                         {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : null}

@@ -24,36 +24,24 @@ const Data = () => {
             })
     }, [])
 
-    // const returnData = (target, code) => {
-    //     if (data) {
-    //         return <div className='data-container'>
-    //             <Flag code={code} />
-    //             <div className="data-text">
-    //                 <h2><span className='data-subtitle'>Cases</span> {data[target].All.confirmed}</h2>
-    //                 <h2><span className='data-subtitle'>Deaths</span> {data[target].All.deaths}</h2>
-    //             </div>
-    //             {/* <h2>Last Updated: {data[target].All.updated}</h2> */}
-    //         </div>
-    //     } else {
-    //         return null
-    //     }
-    // }
+    const dataClass = () => {
+
+    }
 
     return (
         <div>
             <div className='main-container'>
-                {/* {returnData("United Kingdom", "gb")}
-                {returnData("US", "us")}
-                {returnData("Denmark", "DK")}
-                {returnData("Portugal", "PT")} */}
                 {data ? Object.entries(data).map((elem) => {
                     return <div key={elem} className="data-container">
-                        {/* <Flag code={elem[1].All.abbreviation} /> */}
-                        {elem[1].All.abbreviation ?  <Flag code={elem[1].All.abbreviation} /> : null }
+                        {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : null}
                         <h1 className='data-title'>{elem[0]}</h1>
                         <div className='data-text'>
-                            <h2><span className='data-subtitle'>Deaths</span> {elem[1].All.deaths}</h2>
-                            <h2><span className='data-subtitle'>Cases</span> {elem[1].All.confirmed}</h2>
+                            <h2 className='data-subtitle'>Deaths: <em />
+                                <span className={elem[1].All.deaths < 1000 ? "col-green" : "col-orange"}>
+                                    {elem[1].All.deaths}</span></h2>
+                            <h2 className='data-subtitle'>Cases <em />
+                                <span className={elem[1].All.cases < 50000 ? "col-green" : "col-orange"}>
+                                    {elem[1].All.confirmed}</span></h2>
                         </div>
                     </div>
                 })

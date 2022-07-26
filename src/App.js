@@ -6,17 +6,22 @@ import Data from './Data';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import Background from './Background';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      {/* <MapView /> */}
-      <Background />
-      <Navbar />
-      <Data />
-      <Test />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        {/* <MapView /> */}
+        <Background />
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Data />} />
+          {/* <Route exact path="/test" element={<Test />} /> */}
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

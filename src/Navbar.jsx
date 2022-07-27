@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const Navbar = () => {
 
     const listItems = [
-        { text: "Home", id: 1, redirect: "/" },
+        { text: "Home", id: 1, redirect: "/covid-app" },
         { text: "About", id: 2, redirect: "/About" },
         { text: "Credit", id: 3, redirect: "/Credit" },
     ]

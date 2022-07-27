@@ -16,7 +16,7 @@ function App() {
         <Background />
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Data />} />
+          <Route exact path="covid-app" element={<Data />} />
           {/* <Route exact path="/test" element={<Test />} /> */}
         </Routes>
         <Footer />

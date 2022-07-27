@@ -28,6 +28,8 @@ const Data = () => {
 
     }
 
+    console.log(data)
+
 
     return (
         <div className=''>

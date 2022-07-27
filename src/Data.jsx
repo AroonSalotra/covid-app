@@ -35,7 +35,7 @@ const Data = () => {
         <div className=''>
             {/* <button onClick={() => console.log(data)}>Data</button> */}
             <div className='main-container'>
-            <h1>title</h1>
+            {/* <h1>title</h1> */}
                 {data ? Object.entries(data).map((elem) => {
                     return <div key={elem} className="data-container">
                         {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : <div className='img-placeholder'></div>}

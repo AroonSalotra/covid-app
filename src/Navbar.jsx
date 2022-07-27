@@ -11,7 +11,6 @@ const Navbar = () => {
     return (
         <div className="navbar-container">
             <ul className="navbar-list">
-
                 {listItems.map(({ text, id, redirect }) => {
                     return <Link to={redirect} key={id} className="link">
                         <li>{text}</li>

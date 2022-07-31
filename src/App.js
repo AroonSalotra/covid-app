@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import Background from './Background';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
+import Debug from './Debug';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
               display={display} setDisplay={setDisplay}
             />} />
           {/* <Route exact path="/test" element={<Test />} /> */}
+          <Route exact path="/debug" element={<Debug />}></Route>
         </Routes>
         <Footer />
       </div>

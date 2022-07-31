@@ -204,6 +204,18 @@ body {
 .icon-scroll {
   font-size: 2rem;
   color: var(--clr-a-1);
+  opacity: 1;
+  transition: opacity 150ms ease-in;
+}
+
+.icon-scroll:hover {
+  cursor: pointer;
+  font-size: 2.2rem;
+}
+
+.icon-text {
+  color: var(--clr-d-1);
+  font-weight: 600;
 }
 
 .footer {
@@ -249,6 +261,7 @@ body {
 .hide {
   opacity: 0;
   pointer-events: none;
+  transition: opacity 150ms ease-in;
 }
 
 @media (max-width: 1100px) {

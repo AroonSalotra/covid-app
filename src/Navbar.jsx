@@ -8,6 +8,8 @@ const Navbar = () => {
         { text: "Credit", id: 3, redirect: "/Credit" },
     ]
 
+    listItems.push({text: "Debug", id: 4, redirect: "/debug"})
+
     return (
         <div className="navbar-container">
             <ul className="navbar-list">

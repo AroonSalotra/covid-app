@@ -9,10 +9,13 @@ import Background from './Background';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import Debug from './Debug';
+import Sort from './Sort';
 
 function App() {
 
   const [display, setDisplay] = useState("hide")
+  const [value, setValue] = useState(null)
+
 
   return (
     <BrowserRouter>
@@ -24,6 +27,7 @@ function App() {
           <Route exact path="covid-app" element={
             <Data
               display={display} setDisplay={setDisplay}
+              value={value} setValue={setValue}
             />} />
           {/* <Route exact path="/test" element={<Test />} /> */}
           <Route exact path="/debug" element={<Debug />}></Route>

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Flag from './Flag';
 import ScrollToTop from './ScrollToTop';
 import { BsFillArrowUpCircleFill } from "react-icons/bs"
+import Sort from './Sort';
 
 
 
@@ -16,6 +17,7 @@ const Data = (props) => {
 
     const elemRef = useRef()
 
+    // get API
     useEffect(() => {
         axios.get(url)
             .then(response => {
@@ -36,48 +38,83 @@ const Data = (props) => {
         return target.scrollTop = 0 + props.setDisplay("hide")
     }
 
-    const setSort = () => {
-        (sortDescending ? setSortDescending(false) : setSortDescending(true))
-    }
-
     useEffect(() => {
         const handleScroll = event => {
             const target = elemRef.current
             let result = target.scrollTop
-            // console.log(result)
             result > 1500 ? props.setDisplay("") : props.setDisplay("hide")
         }
-
         const listener = "wheel"
 
         window.addEventListener(listener, handleScroll);
         return () => {
             window.removeEventListener(listener, handleScroll);
         };
-
     }, []);
 
     const sortData = () => {
         if (data) {
             return Object.entries(data)
                 .sort((a, b) =>
-                    b[1].All.confirmed - a[1].All.confirmed
+                    a[1].All.confirmed - b[1].All.confirmed
                 )
         }
     }
 
     const test = () => {
+        // if (sortDescending) {
+        //     return sortData()
+        // } else {
+        //     return Object.entries(data)
+        // }
 
-        if (sortDescending) {
-            return sortData()
-        } else {
-            return Object.entries(data)
+        let target = Object.entries(data)
+        switch (props.value) {
+            case "cases-high":
+                return target.sort((a, b) =>
+                b[1].All.confirmed - a[1].All.confirmed
+            )
+                break;
+            case "cases-low":
+                // return sortData()
+                return target.sort((a, b) =>
+                    a[1].All.confirmed - b[1].All.confirmed
+                )
+                break;
+            default:
+                return Object.entries(data)
+
         }
     }
 
+
+    const sortChoose = () => {
+
+        // let value;
+        // switch (props.value) {
+        //     case "cases-low":
+        //         return props.value
+        //         break;
+        //     case "cases-high":
+        //         return props.value
+        //         break;
+        //     default:
+        //         return null;
+        // }
+
+
+
+    }
+
+    console.log(sortChoose())
+
     return (
         <div className=''>
-            <button onClick={() => setSort()}>Test</button>
+
+            <Sort value={props.value}
+                setValue={props.setValue}
+            />
+
             <div className="main-container">
                 <div className='content-container' ref={elemRef} >
                     {data ? test()
@@ -101,10 +138,6 @@ const Data = (props) => {
                         })
                         : null}
                 </div>
-
-                {/* <ScrollToTop
-                    display={props.display}
-                    handleClick={handleClick} /> */}
 
                 <div className={`scroll-container ${props.display}`}>
                     <BsFillArrowUpCircleFill

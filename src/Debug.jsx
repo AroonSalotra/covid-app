@@ -1,8 +1,13 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 
 const Debug = () => {
 
     const [dataSort, setDataSort] = useState(false)
+    const refOne = useRef()
+    const refTwo = useRef()
+    const refThree = useRef()
+
+    const [result, setResult] = useState("")
 
     const [data, setData] = useState(
         [
@@ -13,40 +18,50 @@ const Debug = () => {
         ]
     )
 
+    useEffect(() => {
+        const handleScroll = event => {
+            console.log(event.target.ref)
+        }
+        const listener = "click"
+
+        window.addEventListener(listener, handleScroll);
+        return () => {
+            window.removeEventListener(listener, handleScroll);
+        };
+    }, []);
+
     const handleClick = () => {
-        dataSort ? setDataSort(false) : setDataSort(true)
+        console.log(result)
     }
-
-    const test = dataSort ? "true" : "false"
-
     // console.log(test)
 
     const dataSorted = () => {
-        return [...data].sort((a,b) => 
+        return [...data].sort((a, b) =>
             a.age - b.age
         )
     }
 
-    console.log(dataSorted())
+    const handleClick2 = (event) => {
+        setResult(event.target.value)
+        console.log(result)
+    }
+
+    // console.log(dataSorted())
 
 
     const sortedData = [...data].sort((a, b) => b.age - a.age)
 
     return (
-        <div>
+        <div ref={refOne}>
 
-        <button onClick={() => handleClick()}>Debug</button>
+            {/* <button onClick={() => handleClick()}>Debug</button> */}
+            <h1>current value: {result}</h1>
 
-            {
-                (dataSort ? dataSorted() : data )
-                .map(({ name, age }) => {
-                    return <div key={age}>
-                        <h1>{name}</h1>
-                        <h2>{age}</h2>
-                    </div>
-                })}
-
-
+            <select name="" id="" onChange={handleClick2}>
+                <option value="1" id="one" >One</option>
+                <option value="2" id="two"  >Two</option>
+                <option value="3">Three</option>
+            </select>
 
         </div>
     );

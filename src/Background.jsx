@@ -5,7 +5,7 @@ const Background = () => {
     const url4 = "https://images.unsplash.com/photo-1461301214746-1e109215d6d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
     return ( 
         <div className="background-img">
-            <img src={url4} alt="" />
+            <img src={url1} alt="" />
         </div>
      );
 }

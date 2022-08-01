@@ -26,6 +26,7 @@ body {
   max-width: 100%;
   right: 0;
   overflow: hidden;
+  color: rgb(233, 227, 227);
   /* border: 1px solid red; */
 }
 
@@ -60,7 +61,7 @@ body {
   right: 0;
   width: 100vw;
   height: 100vh;
-  filter: blur(5px);
+  /* filter: blur(5px); */
 }
 
 /* width */
@@ -104,7 +105,7 @@ body {
 .data-container {
   text-align: left;
   background: rgb(75, 89, 129);
-  background: rgb(214, 207, 207);
+  background: rgb(66, 66, 75);
   max-width: fit-content;
   border-bottom-right-radius: 5px;
   /* height: max-content; */
@@ -166,9 +167,10 @@ body {
 
 .data-title {
   text-align: center;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
-  background: rgb(191, 192, 196);
+  color: rgb(207, 205, 205);
+  background: rgb(48, 48, 49);
 }
 
 .data-capital {
@@ -207,8 +209,6 @@ body {
   font-weight: 600;
 }
 
-
-
 .scroll-top {
   width: 2rem;
   height: 2rem;
@@ -244,8 +244,8 @@ body {
   /* padding-left: 40rem; */
   /* margin: auto; */
   bottom: 0;
-  border-top: 5px solid var(--clr-b-1);
-  color: white;
+  border-top: 2px solid rgb(27, 6, 6);
+  /* color: white; */
 }
 
 .list {

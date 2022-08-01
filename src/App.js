@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import Debug from './Debug';
 import Sort from './Sort';
+import About from './About';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
       <div className="App">
         {/* <MapView /> */}
         <Background />
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route exact path="covid-app" element={
             <Data
@@ -31,6 +32,7 @@ function App() {
             />} />
           {/* <Route exact path="/test" element={<Test />} /> */}
           <Route exact path="/debug" element={<Debug />}></Route>
+          <Route exact path="/About" element={<About/>}></Route>
         </Routes>
         <Footer />
       </div>

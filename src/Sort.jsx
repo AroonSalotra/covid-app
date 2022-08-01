@@ -9,15 +9,17 @@ const Sort = (props) => {
   }
 
   return (
-    <>
-      <h1>current value: {props.value}</h1>
-      <select name="" id="" onChange={handleClick} >
-        <option value="">Select</option>
+
+    <div className="sort-container">
+      {/* <h1>current value: {props.value}</h1> */}
+      <select name="" id="" onChange={handleClick} className="sort-content" >
+        <option value="">Sort by</option>
         <option value="alphabetical">Alphabetical</option>
         <option value="cases-high">Cases High</option>
         <option value="cases-low">Cases Low</option>
       </select>
-    </>
+    </div>
+
   );
 }
 

@@ -23,7 +23,7 @@ function App() {
       <div className="App">
         {/* <MapView /> */}
         <Background />
-        {/* <Navbar /> */}
+        <Navbar />
         <Routes>
           <Route exact path="covid-app" element={
             <Data

@@ -47,9 +47,7 @@ const Data = (props) => {
         const listener = "wheel"
 
         window.addEventListener(listener, handleScroll);
-        return () => {
-            window.removeEventListener(listener, handleScroll);
-        };
+        return () => { window.removeEventListener(listener, handleScroll); };
     }, []);
 
     const sortData = () => {
@@ -72,8 +70,8 @@ const Data = (props) => {
         switch (props.value) {
             case "cases-high":
                 return target.sort((a, b) =>
-                b[1].All.confirmed - a[1].All.confirmed
-            )
+                    b[1].All.confirmed - a[1].All.confirmed
+                )
                 break;
             case "cases-low":
                 // return sortData()
@@ -132,7 +130,6 @@ const Data = (props) => {
                                     <p className='data-subtitle'>Deaths
                                         <span className={`data-num ${elem[1].All.deaths < 1000 ? "col-orange" : "col-red"}`}>
                                             {elem[1].All.deaths}</span></p>
-
                                 </div>
                             </div>
                         })

@@ -12,13 +12,14 @@ const Navbar = () => {
 
     return (
         <div className="navbar-container">
-            <ul className="navbar-list">
+            {/* <ul className="navbar-list">
                 {listItems.map(({ text, id, redirect }) => {
                     return <Link to={redirect} key={id} className="link">
                         <li>{text}</li>
                     </Link>
                 })}
-            </ul>
+            </ul> */}
+            <h1>COVID-19 Data by Country</h1>
         </div>
     );
 }

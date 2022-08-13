@@ -11,7 +11,7 @@ const Navbar = () => {
     // listItems.push({text: "Debug", id: 4, redirect: "/debug"})
 
     return (
-        <div className="navbar-container">
+        <nav className="navbar-container">
             {/* <ul className="navbar-list">
                 {listItems.map(({ text, id, redirect }) => {
                     return <Link to={redirect} key={id} className="link">
@@ -20,7 +20,7 @@ const Navbar = () => {
                 })}
             </ul> */}
             <h1>COVID-19 Data by Country</h1>
-        </div>
+        </nav>
     );
 }
 

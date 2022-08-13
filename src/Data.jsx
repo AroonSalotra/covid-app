@@ -34,7 +34,7 @@ const Data = (props) => {
 
     const handleClick = () => {
         const target = elemRef.current
-        let y = target.scrollTop
+        // let y = target.scrollTop
         return target.scrollTop = 0 + props.setDisplay("hide")
     }
 
@@ -59,7 +59,7 @@ const Data = (props) => {
         }
     }
 
-    const test = () => {
+    const getData = () => {
         // if (sortDescending) {
         //     return sortData()
         // } else {
@@ -85,37 +85,15 @@ const Data = (props) => {
         }
     }
 
-
-    const sortChoose = () => {
-
-        // let value;
-        // switch (props.value) {
-        //     case "cases-low":
-        //         return props.value
-        //         break;
-        //     case "cases-high":
-        //         return props.value
-        //         break;
-        //     default:
-        //         return null;
-        // }
-
-
-
-    }
-
-    console.log(sortChoose())
-
     return (
-        <div className=''>
-
+        <>
             <Sort value={props.value}
                 setValue={props.setValue}
             />
 
-            <div className="main-container">
+            <main className="main-container">
                 <div className='content-container' ref={elemRef} >
-                    {data ? test()
+                    {data ? getData()
                         .map((elem) => {
                             return <div key={elem} className="data-container">
                                 {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : <div className='img-placeholder'></div>}
@@ -136,15 +114,15 @@ const Data = (props) => {
                         : null}
                 </div>
 
-                <div className={`scroll-container ${props.display}`}>
-                    <BsFillArrowUpCircleFill
-                        className="icon-scroll"
-                        onClick={handleClick} />
-                    <p className='icon-text'>Scroll To Top</p>
-                </div>
 
+            </main>
+            <div className={`scroll-container ${props.display}`}>
+                <BsFillArrowUpCircleFill
+                    className="icon-scroll"
+                    onClick={handleClick} />
+                <p className='icon-text'>Scroll To Top</p>
             </div>
-        </div>
+        </>
     );
 }
 

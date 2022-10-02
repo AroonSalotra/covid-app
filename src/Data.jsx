@@ -11,23 +11,15 @@ import LocalData from "./LocalData.json"
 
 
 const Data = (props) => {
-    // const [data, setData] = useState(LocalData)
-    // const [data, setData] = useState(null)
-    const [index, setIndex] = useState(1)
     const [amount, setAmount] = useState(16)
-    const [color, setColor] = useState("red")
-    const [state, setState] = useState([])
     const url = "https://covid-api.mmediagroup.fr/v1/cases"
-    const [sortDescending, setSortDescending] = useState(false)
 
     const elemRef = useRef()
-
 
     // Get API
     const { data } = UseGetAPI(url)
 
     // console.log(data)
-
     const testObj = { name: "Test", age: 24 }
 
     const handleClick = () => {
@@ -52,43 +44,30 @@ const Data = (props) => {
 
     }, [amount]);
 
-    // const sortData = () => {
-    //     if (data) {
-    //         return Object.entries(data)
-    //             .sort((a, b) =>
-    //                 a[1].All.confirmed - b[1].All.confirmed
-    //             )
-    //     }
-    // }
-
     const getData = () => {
-        let target = Object.entries(data)
         switch (props.value) {
             case "cases-high":
-                return target.sort((a, b) =>
+                return data.sort((a, b) =>
                     b[1].All.confirmed - a[1].All.confirmed
                 )
-                break;
             case "cases-low":
-                // return sortData()
-                return target.sort((a, b) =>
+                return data.sort((a, b) =>
                     a[1].All.confirmed - b[1].All.confirmed
                 )
             default:
-                return Object.entries(data)
+                return data
         }
     }
 
     return (
         <>
             <Sort value={props.value}
-                setValue={props.setValue}
-            />
-            <button onClick={() => setAmount(amount + 8)}>ADD</button>
+                setValue={props.setValue} />
             <main className="main-container">
                 <div className='content-container' ref={elemRef} >
                     {data ?
-                        data.slice(0, amount)
+                        getData()
+                            .slice(0, amount)
                             .map((elem) => {
                                 return <div key={elem} className="data-container">
                                     {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : <div className='img-placeholder'></div>}

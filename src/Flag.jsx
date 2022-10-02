@@ -20,7 +20,7 @@ const Flag = (props) => {
     return (
         <>
             {data ?
-                <div><img src={url} className="flag-container" alt="" /></div>
+                <img src={url} className="flag-container" alt="" />
                 : null}
         </>
     );

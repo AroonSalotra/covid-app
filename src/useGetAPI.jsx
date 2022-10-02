@@ -22,10 +22,3 @@ const UseGetAPI = (url, amount) => {
 }
 
 export default UseGetAPI;
-
-
-// const testObj = { name: "Test", age: 24 }
-
-// useEffect(() => {
-//     setState(current => [...current, testObj])
-// }, [])

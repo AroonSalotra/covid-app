@@ -143,7 +143,6 @@ body {
   text-decoration: underline 2px;
 }
 
-
 .data-text {
   display: flex;
   flex-direction: column;
@@ -192,11 +191,12 @@ body {
 
 .footer {
   position: fixed;
+  bottom: 0;
+  position: relative;
   background: rgb(133, 69, 69);
   background: var(--clr-b-1);
   background: rgb(25, 25, 53);
   width: 100vw;
-  bottom: 0;
   border-top: 2px solid rgb(27, 6, 6);
 }
 
@@ -288,11 +288,21 @@ body {
 
 @media (max-width: 800px) {
   .content-container {
-    grid-template-columns: repeat(1, 15rem);
+    /* grid-template-columns: repeat(1, 15rem); */
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 2rem; */
+    column-gap: 5rem;
+    row-gap: 2rem;
   }
 
   .sort-container {
-    transform: translate(-4rem, 1rem);
+    transform: translate(0, 0.5rem);
+  }
+
+  .sort-content {
+    border-radius: 0;
+    padding-left: 2px;
   }
 
   .navbar-container {

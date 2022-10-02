@@ -61,15 +61,10 @@ body {
   right: 0;
   width: 100vw;
   height: 100vh;
-  /* filter: blur(5px); */
 }
 
 .main-container {
   display: flex;
-  /* justify-content: center; */
-  /* width: fit-content; */
-  /* margin: auto; */
-  /* align-items: center; */
 }
 
 .data-container {
@@ -94,18 +89,8 @@ body {
 }
 
 .scroll-container {
-  /* padding-top: 2rem; */
-  /* padding-left: 1rem; */
-  /* outline: 3px solid red; */
-  /* height: fit-content; */
   position: absolute;
   width: 100vw;
-  /* padding-left: 72rem; */
-  /* transform: translate(10rem); */
-  /* position: absolute; */
-  /* width: 100vw; */
-  /* float: right; */
-  /* width: 0; */
 }
 
 .sort-container {

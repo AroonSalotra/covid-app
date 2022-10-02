@@ -31,9 +31,10 @@ function App() {
               value={value} setValue={setValue}
             />} />
           {/* <Route exact path="/test" element={<Test />} /> */}
-          <Route exact path="/debug" element={<Debug />}></Route>
-          <Route exact path="/About" element={<About/>}></Route>
+          {/* <Route exact path="/debug" element={<Debug />}></Route> */}
+          <Route exact path="/About" element={<About />}></Route>
         </Routes>
+          <Debug />
         <Footer />
       </div>
     </BrowserRouter>

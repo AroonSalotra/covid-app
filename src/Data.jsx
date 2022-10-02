@@ -5,67 +5,63 @@ import Flag from './Flag';
 import ScrollToTop from './ScrollToTop';
 import { BsFillArrowUpCircleFill } from "react-icons/bs"
 import Sort from './Sort';
+import UseGetAPI from './useGetAPI';
+import LocalData from "./LocalData.json"
 
 
 
 const Data = (props) => {
-    const [data, setData] = useState(null)
+    // const [data, setData] = useState(LocalData)
+    // const [data, setData] = useState(null)
     const [index, setIndex] = useState(1)
+    const [amount, setAmount] = useState(16)
     const [color, setColor] = useState("red")
+    const [state, setState] = useState([])
     const url = "https://covid-api.mmediagroup.fr/v1/cases"
     const [sortDescending, setSortDescending] = useState(false)
 
     const elemRef = useRef()
 
-    // get API
-    useEffect(() => {
-        axios.get(url)
-            .then(response => {
-                // console.log("connected")
-                setData(response.data)
-                setColor("green")
-                // console.log(Object.keys(data))
-                // console.log(data)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [])
+
+    // Get API
+    const { data } = UseGetAPI(url)
+
+    // console.log(data)
+
+    const testObj = { name: "Test", age: 24 }
 
     const handleClick = () => {
         const target = elemRef.current
-        // let y = target.scrollTop
         return target.scrollTop = 0 + props.setDisplay("hide")
     }
 
     useEffect(() => {
-        const handleScroll = event => {
-            const target = elemRef.current
-            let result = target.scrollTop
-            result > 1500 ? props.setDisplay("") : props.setDisplay("hide")
-        }
         const listener = "wheel"
 
-        window.addEventListener(listener, handleScroll);
-        return () => { window.removeEventListener(listener, handleScroll); };
-    }, []);
-
-    const sortData = () => {
-        if (data) {
-            return Object.entries(data)
-                .sort((a, b) =>
-                    a[1].All.confirmed - b[1].All.confirmed
-                )
+        const handleScroll = event => {
+            const target = elemRef.current
+            let result = target.scrollHeight
+            // result > 1500 ? props.setDisplay("") : props.setDisplay("hide")
+            // console.log(result)
+            if (result % 800 <= 50) setAmount(amount + 8)
         }
-    }
+
+        window.addEventListener(listener, handleScroll);
+
+        return () => { window.removeEventListener(listener, handleScroll); };
+
+    }, [amount]);
+
+    // const sortData = () => {
+    //     if (data) {
+    //         return Object.entries(data)
+    //             .sort((a, b) =>
+    //                 a[1].All.confirmed - b[1].All.confirmed
+    //             )
+    //     }
+    // }
 
     const getData = () => {
-        // if (sortDescending) {
-        //     return sortData()
-        // } else {
-        //     return Object.entries(data)
-        // }
-
         let target = Object.entries(data)
         switch (props.value) {
             case "cases-high":
@@ -78,10 +74,8 @@ const Data = (props) => {
                 return target.sort((a, b) =>
                     a[1].All.confirmed - b[1].All.confirmed
                 )
-                break;
             default:
                 return Object.entries(data)
-
         }
     }
 
@@ -90,27 +84,28 @@ const Data = (props) => {
             <Sort value={props.value}
                 setValue={props.setValue}
             />
-
+            <button onClick={() => setAmount(amount + 8)}>ADD</button>
             <main className="main-container">
                 <div className='content-container' ref={elemRef} >
-                    {data ? getData()
-                        .map((elem) => {
-                            return <div key={elem} className="data-container">
-                                {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : <div className='img-placeholder'></div>}
-                                <p className='data-title'>{elem[1].All.location}</p>
-                                <p className='data-capital'>{elem[0]}</p>
-                                <div className='data-text'>
-                                    <p className='data-subtitle'>Population
-                                        <span className='data-num'>{elem[1].All.population > 0 ? elem[1].All.population : "[NO DATA]"}</span></p>
-                                    <p className='data-subtitle'>Cases
-                                        <span className={`data-num ${elem[1].All.deaths < 50000 ? "col-orange" : "col-red"}`}>
-                                            {elem[1].All.confirmed}</span></p>
-                                    <p className='data-subtitle'>Deaths
-                                        <span className={`data-num ${elem[1].All.deaths < 1000 ? "col-orange" : "col-red"}`}>
-                                            {elem[1].All.deaths}</span></p>
+                    {data ?
+                        data.slice(0, amount)
+                            .map((elem) => {
+                                return <div key={elem} className="data-container">
+                                    {elem[1].All.abbreviation ? <Flag code={elem[1].All.abbreviation} /> : <div className='img-placeholder'></div>}
+                                    <p className='data-title'>{elem[1].All.location}</p>
+                                    <p className='data-capital'>{elem[0]}</p>
+                                    <div className='data-text'>
+                                        <p className='data-subtitle'>Population
+                                            <span className='data-num'>{elem[1].All.population > 0 ? elem[1].All.population : "[NO DATA]"}</span></p>
+                                        <p className='data-subtitle'>Cases
+                                            <span className={`data-num ${elem[1].All.deaths < 50000 ? "col-orange" : "col-red"}`}>
+                                                {elem[1].All.confirmed}</span></p>
+                                        <p className='data-subtitle'>Deaths
+                                            <span className={`data-num ${elem[1].All.deaths < 1000 ? "col-orange" : "col-red"}`}>
+                                                {elem[1].All.deaths}</span></p>
+                                    </div>
                                 </div>
-                            </div>
-                        })
+                            })
                         : null}
                 </div>
 
